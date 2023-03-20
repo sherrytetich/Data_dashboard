@@ -10,7 +10,19 @@ $dataPoints = array(
 	array("label"=> "Core 7", "y"=> 2),
 	array("label"=> "Core 8", "y"=> 18)
 );
- 
+ $link = mysqli_connect("localhost","root","");
+ mysql_select_db($link,"chart_db");
+
+ $test=array();
+
+ $count=0;
+ $res=mysqli_query($link,'select' from 'chart_db');
+ while($row=mysqli_fetch_array($res))
+ {
+    $test[$count]['label']=$row['label'];
+    $test[$count]['y']=$row['Number'];
+	$count=$count+1;
+ }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -31,7 +43,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "column",
 		yValueFormatString: "#,##0.00\"%\"",
 		indexLabel: "{y}",
-		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+		dataPoints: <?php echo json_encode($test, JSON_NUMERIC_CHECK); ?>
 	}]
 });
  
