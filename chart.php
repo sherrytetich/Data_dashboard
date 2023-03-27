@@ -16,7 +16,7 @@ $dataPoints = array(
  $test=array();
 
  $count=0;
- $res=mysqli_query($link,'select' from 'chart_db');
+ $res=mysqli_query($link,'select'from'chart_db');
  while($row=mysqli_fetch_array($res))
  {
     $test[$count]['label']=$row['label'];
